@@ -6,12 +6,18 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.util.Log
+import android.view.Gravity
+import android.view.Menu
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
@@ -24,22 +30,18 @@ import com.dragonlight.secondapp.fragment.MainFragmentDirections
 import com.dragonlight.secondapp.viewmodel.UserViewModel
 import com.google.android.material.navigation.NavigationView
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel by viewModels<UserViewModel>()
     private val userList = emptyList<User>()
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var drawerLayout: DrawerLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-
+        setContentView(binding.root)
         userPermission()
-        initUi()
+
     }
 
     private fun userPermission() {
@@ -50,6 +52,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 this,
                 arrayOf(Manifest.permission.READ_CONTACTS), 1
             )
+            readContact()
         } else {
             readContact()
         }
@@ -114,40 +117,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    private fun initUi() {
-        setSupportActionBar(binding.appBarMain.toolbar)
-
-        drawerLayout = binding.drawLayout
-        val navView: NavigationView = binding.navView
-        val navController = findNavController(R.id.fragmentContainerView)
-
-//        setSupportActionBar(binding.appBarMain.toolbar)
-        setupActionBarWithNavController(navController)
-
-        appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.setting, R.id.userGroup
-            ), drawerLayout
-        )
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
-
-        navView.setNavigationItemSelectedListener(this)
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        drawerLayout.closeDrawer(GravityCompat.START)
-        when(item.itemId){
-            R.id.userGroup ->{
-                val action = MainFragmentDirections.actionMainFragmentToSetImportantLevelFragment()
-                findNavController(R.id.fragmentContainerView).navigate(action)
-            }
-        }
-        return true
-    }
-
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.fragmentContainerView)
-        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
+
 }

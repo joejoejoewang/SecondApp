@@ -1,16 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:ShowIn="nav_view">
 
-    <group android:checkableBehavior="single">
-        <item android:id="@+id/setting"
-            android:title="Setting"
-            android:icon="@drawable/setting"/>
-        <item android:id="@+id/userGroup"
-            android:title="客戶重要性劃分"
-            android:icon="@drawable/user_group"/>
+    <group
+        android:id="@+id/menu_group_allFragment"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_item_setting"
+            android:icon="@drawable/setting"
+            android:title="Setting" />
+        <item
+            android:id="@+id/menu_item_userLevel"
+            android:icon="@drawable/user_group"
+            android:title="客戶重要性劃分" />
     </group>
+    <group android:id="@+id/menu_group_someFragment"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_item_search"
+            android:icon="@drawable/search"
+            android:title="Search"
+            app:actionViewClass="androidx.appcompat.widget.SearchView"
+            app:showAsAction="always" />
+        <item
+            android:id="@+id/menu_item_save"
+            android:icon="@drawable/save"
+            android:title="Save"
+            app:showAsAction="always" />
 
+    </group>
 
 </menu>

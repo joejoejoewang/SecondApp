@@ -1,14 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.MainFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+<!--    <include android:id="@+id/toolbar_main_fragment"-->
+<!--        layout="@layout/toolbar_all"/>-->
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tv_word1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="70dp"
+        android:text="今日待聯絡"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_word3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="70dp"
+        android:text="今日已完成"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/tv_number1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_word1"
+        android:layout_alignStart="@id/tv_word1"
+        android:layout_marginTop="50dp"
+        android:background="#03A9F4"
+        android:padding="20dp"
+        android:text="0"
+        android:textSize="48sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_number3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/tv_word3"
+        android:layout_alignTop="@id/tv_number1"
+        android:background="#FFEB3B"
+        android:padding="20dp"
+        android:text="0"
+        android:textSize="48sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_main_setting"
+        android:textSize="48sp"
+        android:text="設定"
+        android:layout_centerInParent="true"
+        android:background="#F06292"/>
+
+    <ImageButton
+        android:id="@+id/imageUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/tv_number1"
+        android:layout_marginTop="450dp"
+        android:adjustViewBounds="true"
+        android:background="#4CAF50"
+        android:padding="20dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/user" />
+
+    <ImageButton
+        android:id="@+id/imageCalender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@id/tv_number3"
+        android:layout_marginTop="450dp"
+        android:adjustViewBounds="true"
+        android:background="#4CAF50"
+        android:padding="20dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/calendar" />
+
+</RelativeLayout>

@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.dragonlight.secondapp.fragment.MainFragment"
-        android:label="fragment_main"
+        android:label="Main"
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_userListFragment"
@@ -19,11 +19,39 @@
     <fragment
         android:id="@+id/userListFragment"
         android:name="com.dragonlight.secondapp.fragment.UserListFragment"
-        android:label="fragment_user_list"
-        tools:layout="@layout/fragment_user_list" />
+        android:label="User List"
+        tools:layout="@layout/fragment_user_list" >
+        <action
+            android:id="@+id/action_userListFragment_to_userDetailInfoFragment"
+            app:destination="@id/userDetailInfoFragment" />
+    </fragment>
     <fragment
         android:id="@+id/setImportantLevelFragment"
         android:name="com.dragonlight.secondapp.fragment.SetImportantLevelFragment"
-        android:label="fragment_set_important_level"
+        android:label="Set Important Level"
         tools:layout="@layout/fragment_set_important_level" />
+    <fragment
+        android:id="@+id/userDetailInfoFragment"
+        android:name="com.dragonlight.secondapp.fragment.UserDetailInfoFragment"
+        android:label="Customer Detail Information"
+        tools:layout="@layout/fragment_user_detail_info" >
+        <argument
+            android:name="userDetailArgu"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_userDetailInfoFragment_to_taskDetailFragment"
+            app:destination="@id/taskDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taskDetailFragment"
+        android:name="com.dragonlight.secondapp.fragment.TaskDetailFragment"
+        android:label="fragment_task_detail"
+        tools:layout="@layout/fragment_task_detail" >
+        <argument
+            android:name="taskDetailArgu"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_taskDetailFragment_to_setImportantLevelFragment"
+            app:destination="@id/setImportantLevelFragment" />
+    </fragment>
 </navigation>

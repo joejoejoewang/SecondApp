@@ -16,9 +16,9 @@
         android:id="@+id/tv_main_header_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        android:padding="10dp"
+        android:layout_alignBaseline="@id/image_main_header"
+        android:layout_marginStart="10dp"
         android:text="王明強"
         android:textSize="24sp"
         android:textStyle="bold" />

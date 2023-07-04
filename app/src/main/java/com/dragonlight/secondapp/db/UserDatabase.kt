@@ -4,9 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.dragonlight.secondapp.db.entity.ImportantLevel
+import com.dragonlight.secondapp.db.entity.Task
 import com.dragonlight.secondapp.db.entity.User
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class,ImportantLevel::class,Task::class], version = 1)
 abstract class UserDatabase: RoomDatabase() {
     abstract fun uerDao(): UserDao
 

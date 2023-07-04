@@ -1,14 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserDetailInfoFragment">
+    tools:context=".fragment.UserDetailInfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/layout_user_detail_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@android:color/darker_gray">
+        <TextView
+            android:id="@+id/tv_detailName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textSize="20sp"
+            android:background="#FFCDD2" />
+
+        <TextView
+            android:id="@+id/tv_detailNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/tv_detailName"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@+id/tv_detailName"
+            android:text="TextView"
+            android:textSize="20sp"
+            android:background="#B2DFDB" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_user_detail_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout_user_detail_1"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:background="#DCEDC8">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_user_detail_word5"
+            android:text="買或賣"
+            android:maxEms="2"
+            android:background="#81D4FA"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"/>
+
+        <Switch
+            android:id="@+id/sw_detailBS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_user_detail_word5"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:checked="true"
+            android:minHeight="48dp"
+            android:splitTrack="true"
+            android:switchPadding="20dp"
+            android:textSize="24sp"
+            android:textOn="買"
+            android:textOff="賣"
+            android:background="@color/pink"
+            tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        <TextView
+            android:id="@+id/tv_detailWord3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/sw_detailBS"
+            android:layout_alignTop="@+id/sw_detailBS"
+            android:layout_marginStart="20dp"
+            android:text="等級"
+            android:maxEms="1"
+            android:textSize="16sp"
+            android:background="#C2185B"
+            android:textColor="@color/white"/>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/sp_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/sw_detailBS"
+            android:layout_marginStart="20dp"
+            android:layout_alignParentEnd="true"
+            android:minHeight="48dp" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bt_user_detail_save"
+            android:layout_below="@+id/tv_detailWord3"
+            android:layout_marginTop="15dp"
+            android:text="User Save"/>
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@id/layout_user_detail_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_detailUser"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="#A7FFEB" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floating_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/rv_detailUser"
+            android:layout_alignBottom="@id/rv_detailUser"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:clickable="true"
+            android:src="@drawable/add"
+            android:focusable="true" />
+
+
+    </RelativeLayout>
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/tv_user_detail_spinner_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_alignParentTop="true"
+        android:text="0"
+        android:layout_alignParentStart="true"/>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/tv_user_detail_info_contactId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:visibility="invisible"/>
+
+</RelativeLayout>
